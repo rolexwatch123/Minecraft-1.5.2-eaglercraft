@@ -2,9 +2,9 @@
 
 
 #change the following to "false" to disable auto web updates
-updcheck="true"
+updcheck="false"
 #change the following to "false" to disable all replacements (e.g. changing the default server, ensuring bungeecord is on the right port, etc.)
-rplcheck="true"
+rplcheck="false"
 
 echo ensuring old server process is truly closed...
 nginx -s stop -c ~/$REPL_SLUG/nginx.conf -g 'daemon off; pid /tmp/nginx/nginx.pid;' -p /tmp/nginx -e /tmp/nginx/error.log
@@ -86,7 +86,6 @@ nginx -c ~/$REPL_SLUG/nginx.conf -g 'daemon off; pid /tmp/nginx/nginx.pid;' -p /
 echo starting bukkit...
 cd java/bukkit_command
 java -Xmx512M -Xms512M -jar craftbukkit-1.5.2-R1.0.jar
-cd -
 
 echo killing bungeecord and nginx...
 nginx -s stop -c ~/$REPL_SLUG/nginx.conf -g 'daemon off; pid /tmp/nginx/nginx.pid;' -p /tmp/nginx -e /tmp/nginx/error.log
